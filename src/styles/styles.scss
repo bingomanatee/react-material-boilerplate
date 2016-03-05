@@ -8,8 +8,6 @@ body {
   font: 14px 'Helvetica Neue', Helvetica, Arial, sans-serif;
   line-height: 1.4em;
   color: #4d4d4d;
-  min-width: 230px;
-  max-width: 550px;
   margin: 0 auto;
   -webkit-font-smoothing: antialiased;
   -moz-font-smoothing: antialiased;
@@ -29,3 +27,41 @@ h2 {
 .loss { color: $vin-red; }
 input.small { width: 46px; }
 td.fuel-savings-label { width: 175px; }
+
+
+.select-wrap select {
+	-webkit-appearance:none;
+	-moz-appearance:none;
+	appearance:none;
+	border:none;
+	padding: 0.5em 2em 0.5em 0.5em;
+	background: transparent;
+	position:relative;
+	cursor:pointer;
+}
+.select-wrap {
+	display:inline-block;
+	position:relative;
+	border-left:1px solid #cccccc;
+	border-right:1px solid #cccccc;
+}
+.select-wrap::after {
+	display:block;
+	width:0px;
+	height:0px;
+	content:"　";
+	position:absolute;
+	right:0.5em;
+	top:50%;
+	margin-top:-0.25em;
+	border-top:0.5em solid #777777;
+	border-left:0.5em solid transparent;
+	border-right:0.5em solid transparent;
+
+
+	-moz-pointer-events: none;
+	-webkit-pointer-events: none;
+	pointer-events: none;
+}
+
+@import '../mdl/css/material.deep_orange-green.min.css';

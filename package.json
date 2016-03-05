@@ -20,9 +20,11 @@
   "license": "MIT",
   "dependencies": {
     "connect-history-api-fallback": "1.1.0",
+    "json-loader": "0.5.4",
     "object-assign": "4.0.1",
     "react": "0.14.7",
     "react-dom": "0.14.7",
+    "react-mdl": "1.4.3",
     "react-redux": "4.4.0",
     "react-router": "2.0.0",
     "redux": "3.3.1"

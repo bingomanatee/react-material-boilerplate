@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as actions from '../actions/fuelSavingsActions';
-import FuelSavingsForm from '../components/FuelSavingsForm';
+import FuelSavingsForm from '../components/FuelSavingsForm/FuelSavingsForm';
 
 class FuelSavingsPage extends Component {
   static propTypes = {
