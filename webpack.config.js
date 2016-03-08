@@ -51,7 +51,7 @@ const getEntry = function (env) {
 const getLoaders = function (env) {
   const loaders = [
     { test: /\.js$/, include: path.join(__dirname, 'src'), loaders: ['babel', 'eslint'] },
-    {test: /\.json$/, include: path.join(__dirname, 'scr'), loaders: ['json']}
+    {test: /\.json$/, include: path.join(__dirname, 'src'), loaders: ['json']}
   ];
 
   if (env === productionEnvironment ) {
