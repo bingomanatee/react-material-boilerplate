@@ -25,7 +25,7 @@ class IndexPage extends Component {
         );
     } else {
       return (
-        <div>{terms.user}</div>
+        <div>{terms.title}</div>
       );
     }
   }
@@ -36,7 +36,8 @@ function mapStateToProps(state) {
   return {
     appState: {
       user: state.user.user
-    }
+    },
+    actions
   };
 }
 

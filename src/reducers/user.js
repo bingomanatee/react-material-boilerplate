@@ -15,7 +15,7 @@ export default function fuelSavingsAppState (state = initialState, action) {
   let out = state;
   switch (action.type) {
     case SET_USER:
-      return objectAssign({}, {
+      out = objectAssign({}, {
         user: action.user || null,
         displayName: action.user ? action.user.displayName || action.user.name : ''
       });
