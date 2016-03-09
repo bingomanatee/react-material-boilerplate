@@ -1,10 +1,10 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import * as actions from '../actions/fuelSavingsActions';
-import * as i18nActions from '../actions/i18nActions';
+import * as actions from '../../actions/fuelSavingsActions';
+import * as i18nActions from '../../actions/i18nActions';
 
-import { FuelSavingsForm, enTerms, frTerms} from '../components/FuelSavingsForm/FuelSavingsForm';
+import { FuelSavingsForm, enTerms, frTerms} from '../../components/FuelSavingsForm/FuelSavingsForm';
 import objectAssign from 'object-assign';
 let loadedTerms = false;
 

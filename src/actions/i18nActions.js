@@ -1,4 +1,4 @@
-import * as types from '../actions/ActionTypes';
+import * as types from '../actions/types';
 
 export function setLocale(locale) {
 	return { type: types.SET_I18N_LOCALE, locale };

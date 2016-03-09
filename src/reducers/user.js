@@ -1,4 +1,4 @@
-import {SET_USER} from '../actions/ActionTypes';
+import {SET_USER} from '../actions/types';
 import objectAssign from 'object-assign';
 
 const initialState = {
