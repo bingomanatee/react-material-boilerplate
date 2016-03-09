@@ -5,20 +5,12 @@ import { Router, browserHistory } from 'react-router';
 import routes from './routes';
 import configureStore from './store/configureStore';
 import './styles/styles.scss'; //Yep, that's right. You can import SASS/CSS files too! Webpack will run the associated loader and plug this into the page.
+import i18nActions from './actions/i18nActions';
 
-var fsf = require('./components/FuelSavingsForm/terms/en-US.json');
-
-const store = configureStore({
-  i18n: 'en-US',
-  terms: {
-    FuelSavingsForm: {
-      'en-US': fsf
-    }
-  }
-});
+const store = configureStore();
 
 render(
   <Provider store={store}>
-    <Router history={browserHistory} routes={routes}/>
+      <Router history={browserHistory} routes={routes}/>
   </Provider>, document.getElementById('app')
 );

@@ -2,38 +2,58 @@ import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as actions from '../actions/fuelSavingsActions';
-import FuelSavingsForm from '../components/FuelSavingsForm/FuelSavingsForm';
+import * as i18nActions from '../actions/i18nActions';
 
-class FuelSavingsPage extends Component {
-  static propTypes = {
-    actions: PropTypes.object.isRequired,
-    appState: PropTypes.object.isRequired
-  };
+import { FuelSavingsForm, enTerms, frTerms} from '../components/FuelSavingsForm/FuelSavingsForm';
+import objectAssign from 'object-assign';
+let loadedTerms = false;
 
-  render() {
-    return (
-      <FuelSavingsForm
-        saveFuelSavings={this.props.actions.saveFuelSavings}
-        calculateFuelSavings={this.props.actions.calculateFuelSavings}
-        appState={this.props.appState}
-      />
-    );
-  }
+class FuelSavingsComponent extends Component {
+    constructor(props) {
+        console.log('FuelSavingsComponent props', props);
+        super(props);
+        if (!loadedTerms) {
+            props.actions.setCompLocaleTerms('FuelSavingsForm', 'en-US', enTerms);
+            props.actions.setCompLocaleTerms('FuelSavingsForm', 'fr-FR', frTerms);
+            loadedTerms = true;
+        }
+    }
+
+    static propTypes = {
+        actions: PropTypes.object.isRequired,
+        appState: PropTypes.object.isRequired
+    };
+
+    render() {
+        return (
+          <FuelSavingsForm
+            saveFuelSavings={this.props.actions.saveFuelSavings}
+            calculateFuelSavings={this.props.actions.calculateFuelSavings}
+            appState={this.props.appState}
+          />
+        );
+    }
 }
 
 function mapStateToProps(state) {
-  return {
-    appState: state.fuelSavingsAppState
-  };
+    console.log('------- FuelSavingsComponent STATE: ', state);
+    let terms = state.i18nState.componentTerms.FuelSavingsForm || {'en-US': enTerms};
+    let locale = state.i18nState.locale;
+    console.log(`mapStateToProps ------------- getting locale ${locale} from terms ${JSON.stringify(terms)}`);
+    return {
+        appState: objectAssign({}, state.fuelSavingsAppState, {terms: terms[locale]})
+    };
 }
 
 function mapDispatchToProps(dispatch) {
-  return {
-    actions: bindActionCreators(actions, dispatch)
-  };
+    return {
+        actions: bindActionCreators(objectAssign({}, actions, i18nActions), dispatch)
+    };
 }
 
-export default connect(
+const FuelSavingsPage =  connect(
   mapStateToProps,
   mapDispatchToProps
-)(FuelSavingsPage);
+)(FuelSavingsComponent);
+
+export {FuelSavingsPage, FuelSavingsComponent, enTerms, frTerms}

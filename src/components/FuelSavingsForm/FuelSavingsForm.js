@@ -2,6 +2,9 @@ import React, {PropTypes} from 'react';
 import FuelSavingsResults from './../FuelSavingsResults';
 import FuelSavingsTextInput from './../FuelSavingsTextInput';
 
+import enTerms from './terms/en-US.json';
+import frTerms from './terms/fr_FR.json';
+
 // Destrucuring props for brevity below.
 const FuelSavingsForm = ({saveFuelSavings, calculateFuelSavings, appState}) => {
   const onTimeframeChange = function (e) {
@@ -12,7 +15,6 @@ const FuelSavingsForm = ({saveFuelSavings, calculateFuelSavings, appState}) => {
     calculateFuelSavings(appState, name, value);
   };
 
-  debugger;
   console.log('====== state:', appState);
 
   return (
@@ -21,11 +23,11 @@ const FuelSavingsForm = ({saveFuelSavings, calculateFuelSavings, appState}) => {
       <table>
         <tbody>
         <tr>
-          <td><label htmlFor="newMpg">New Vehicle MPG</label></td>
+          <td><label htmlFor="newMpg">{appState.terms.newvehiclempg}</label></td>
           <td><FuelSavingsTextInput onChange={fuelSavingsKeypress} name="newMpg" value={appState.newMpg}/></td>
         </tr>
         <tr>
-          <td><label htmlFor="tradeMpg">Trade-in MPG</label></td>
+          <td><label htmlFor="tradeMpg">{appState.terms.tradeinmpg}</label></td>
           <td><FuelSavingsTextInput onChange={fuelSavingsKeypress} name="tradeMpg" value={appState.tradeMpg}/></td>
         </tr>
         <tr>
@@ -69,4 +71,4 @@ FuelSavingsForm.propTypes = {
   appState: PropTypes.object.isRequired
 };
 
-export default FuelSavingsForm;
+export {FuelSavingsForm, enTerms, frTerms};
