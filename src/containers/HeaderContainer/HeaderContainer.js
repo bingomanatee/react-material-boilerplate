@@ -16,14 +16,13 @@ class HeaderContainer extends Component {
     };
 
     render() {
-
         const chooseFrenchLocale = () => {
             this.props.actions.setLocale('fr-FR');
         };
 
         const chooseUSlocale = () => {
             this.props.actions.setLocale('en-US');
-        }
+        };
 
         return (
           <Header
